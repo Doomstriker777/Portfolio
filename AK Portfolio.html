@@ -995,11 +995,13 @@
             -->
             <form class="cform reveal-right" id="contactForm" novalidate>
                 <!-- ✏️ Paste your Web3Forms key here ↓ -->
-                <input type="hidden" name="access_key" value="95c1ea3b-33a1-4208-be2e-6fc1dc0e080b">
+                <input type="hidden" name="access_key" value="a3ca7db1-ed2b-454a-bd0c-b2d1684dd366">
                 <!-- Tells Web3Forms which subject line to use -->
                 <input type="hidden" name="subject" value="New Portfolio Message from Contact Form">
                 <!-- Redirects to same page after submission (optional) -->
                 <input type="hidden" name="redirect" value="false">
+                <!-- Honeypot spam trap — must stay hidden and empty -->
+                <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
 
                 <div class="form-row">
                     <div class="fg">
@@ -1154,7 +1156,10 @@
 
             const res  = await fetch('https://api.web3forms.com/submit', {
                 method:  'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body:    json
             });
             const data = await res.json();
